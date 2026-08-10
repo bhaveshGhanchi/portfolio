@@ -6,60 +6,60 @@ import { site } from "@/data/site";
 
 export function Contact() {
   return (
-    <section id="contact" className="relative scroll-mt-20 overflow-hidden py-20 md:py-28">
-      <div className="diag-lines pointer-events-none absolute inset-0" />
-      <div className="noise" />
-
-      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-        <p className="font-mono text-xs text-muted">04 / contact</p>
+    <section id="contact" className="scroll-mt-20 py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-display mt-3 max-w-3xl text-4xl font-extrabold tracking-tight md:text-6xl"
+          className="font-display max-w-2xl text-4xl font-bold tracking-tight md:text-5xl"
         >
-          Got a role, a product, or a weird systems problem?
+          Let&apos;s talk.
         </motion.h2>
+        <p className="mt-4 max-w-md text-muted">
+          Open to roles and collaborations in full-stack and AI systems.
+        </p>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {[
-            { label: "Email", value: site.email, href: `mailto:${site.email}` },
-            { label: "GitHub", value: "bhaveshGhanchi", href: site.github },
-            { label: "LinkedIn", value: "bhaveshghanchi", href: site.linkedin },
-          ].map((item, i) => (
-            <Magnetic key={item.label} strength={0.2}>
-              <motion.a
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  item.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.08 * i }}
-                whileHover={{ borderColor: "#ff4b1f" }}
-                className="block border border-line bg-surface p-5 transition"
-              >
-                <p className="font-mono text-[11px] text-muted">{item.label}</p>
-                <p className="font-display mt-2 text-xl font-bold">{item.value}</p>
-              </motion.a>
-            </Magnetic>
-          ))}
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Magnetic strength={0.2}>
+            <a
+              href={`mailto:${site.email}`}
+              className="inline-flex bg-accent px-5 py-3 font-mono text-xs text-white transition hover:bg-ink"
+            >
+              {site.email}
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.2}>
+            <a
+              href={site.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex border border-line px-5 py-3 font-mono text-xs transition hover:border-ink"
+            >
+              GitHub
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.2}>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex border border-line px-5 py-3 font-mono text-xs transition hover:border-ink"
+            >
+              LinkedIn
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.2}>
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex border border-line px-5 py-3 font-mono text-xs transition hover:border-ink"
+            >
+              Resume
+            </a>
+          </Magnetic>
         </div>
-
-        <Magnetic className="mt-8 inline-block">
-          <a
-            href={site.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex bg-accent px-6 py-3 font-mono text-xs tracking-wide text-white transition hover:bg-ink"
-          >
-            Download resume PDF
-          </a>
-        </Magnetic>
       </div>
     </section>
   );

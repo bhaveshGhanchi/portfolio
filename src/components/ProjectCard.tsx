@@ -16,89 +16,60 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: Math.min(index * 0.07, 0.28) }}
+      transition={{ duration: 0.45, delay: Math.min(index * 0.06, 0.24) }}
       whileHover="hover"
-      className="group relative overflow-hidden border border-line bg-surface"
+      className="group relative border border-line bg-surface p-6 transition-colors hover:border-ink/30 md:p-7"
     >
       <motion.div
         variants={{ hover: { scaleY: 1 } }}
         initial={{ scaleY: 0 }}
-        className="absolute inset-y-0 left-0 w-1 origin-bottom bg-accent"
+        className="absolute inset-y-0 left-0 w-[2px] origin-bottom bg-accent"
       />
 
-      <div className="relative p-6 md:p-7">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="font-mono text-[11px] text-muted">
-              {String(index + 1).padStart(2, "0")}
-            </p>
-            <h3 className="font-display mt-2 text-2xl font-bold tracking-tight transition-colors group-hover:text-accent">
-              {project.name}
-            </h3>
-          </div>
-          {project.metric ? (
-            <motion.div
-              variants={{ hover: { scale: 1.06, rotate: -2 } }}
-              className="border border-line bg-bg px-3 py-2 text-right"
-            >
-              <p className="font-display text-lg font-bold leading-none">
-                {project.metric.value}
-              </p>
-              <p className="mt-1 font-mono text-[10px] text-muted">
-                {project.metric.label}
-              </p>
-            </motion.div>
-          ) : null}
-        </div>
-
-        <p className="mt-4 text-sm leading-relaxed text-muted">
-          {project.summary}
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1">
-          {project.stack.map((tech) => (
-            <span key={tech} className="font-mono text-[11px] text-ink/70">
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-6 flex items-center gap-4">
-          <a
-            href={primary}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-accent transition hover:underline"
-          >
-            {project.liveUrl
-              ? "Open live →"
-              : project.repoUrl
-                ? "Source →"
-                : "Explore →"}
-          </a>
-          {secondary ? (
-            <a
-              href={secondary}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs text-muted transition hover:text-ink hover:underline"
-            >
-              repo
-            </a>
-          ) : null}
-        </div>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="font-display text-xl font-bold tracking-tight group-hover:text-accent md:text-2xl">
+          {project.name}
+        </h3>
+        {project.metric ? (
+          <p className="shrink-0 font-mono text-[11px] text-muted">
+            {project.metric.value}
+          </p>
+        ) : null}
       </div>
 
-      <motion.div
-        aria-hidden
-        variants={{ hover: { x: "0%" } }}
-        initial={{ x: "-110%" }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent_30%,rgba(255,75,31,0.08)_50%,transparent_70%)]"
-      />
+      <p className="mt-3 text-sm leading-relaxed text-muted">{project.summary}</p>
+
+      <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1">
+        {project.stack.map((tech) => (
+          <span key={tech} className="font-mono text-[11px] text-muted">
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-6 flex items-center gap-4">
+        <a
+          href={primary}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-xs text-accent transition hover:underline"
+        >
+          {project.liveUrl ? "Open live →" : "Source →"}
+        </a>
+        {secondary ? (
+          <a
+            href={secondary}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-muted transition hover:text-ink"
+          >
+            repo
+          </a>
+        ) : null}
+      </div>
     </motion.article>
   );
 }

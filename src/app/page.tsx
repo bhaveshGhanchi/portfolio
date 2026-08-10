@@ -1,4 +1,3 @@
-import { CursorSpotlight } from "@/components/Magnetic";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <>
       <ScrollProgress />
-      <CursorSpotlight />
       <Header />
       <main className="flex-1">
         <Hero />

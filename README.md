@@ -1,6 +1,6 @@
 # Bhavesh Ghanchi — Portfolio
 
-Interactive portfolio with OTAS featured, curated projects (including live demos), and resume-backed experience.
+Interactive portfolio with OTAS featured, curated projects, and resume-backed experience.
 
 ## Stack
 
@@ -15,7 +15,19 @@ npm install
 npm run dev
 ```
 
-Resume PDF: [`public/BhaveshGhanchi_Resume.pdf`](public/BhaveshGhanchi_Resume.pdf)
+## Checkpoints
+
+Restore the earlier graphic-heavy design:
+
+```bash
+git checkout checkpoint-graphic
+```
+
+Return to the latest minimal branch tip:
+
+```bash
+git checkout main
+```
 
 ## Edit
 

@@ -2,11 +2,10 @@
 
 import {
   motion,
-  useMotionTemplate,
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type MagneticProps = {
   children: ReactNode;
@@ -42,28 +41,5 @@ export function Magnetic({
     >
       {children}
     </motion.div>
-  );
-}
-
-export function CursorSpotlight() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const bg = useMotionTemplate`radial-gradient(520px circle at ${x}px ${y}px, rgba(255,75,31,0.12), transparent 45%)`;
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
-
-  return (
-    <motion.div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-30 hidden mix-blend-multiply md:block"
-      style={{ background: bg }}
-    />
   );
 }
