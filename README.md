@@ -2,6 +2,11 @@
 
 Interactive portfolio with OTAS featured, curated projects, and resume-backed experience.
 
+## Links
+
+- GitHub: https://github.com/bhaveshGhanchi/portfolio
+- Live: https://portfolio-ten-fawn-43.vercel.app
+
 ## Stack
 
 - Next.js 16 + TypeScript
