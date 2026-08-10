@@ -1,82 +1,220 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+type RelatedLink = {
+  label: string;
+  href: string;
+  kind: "live" | "repo" | "docs" | "section";
+};
+
+type Interest = {
+  id: string;
+  label: string;
+  blurb: string;
+  related: RelatedLink[];
+};
+
+const INTERESTS: Interest[] = [
+  {
+    id: "ai",
+    label: "AI / LLMs",
+    blurb:
+      "Agent observability, RAG, and fine-tuning — how models behave in real systems.",
+    related: [
+      {
+        label: "OTAS",
+        href: "#work",
+        kind: "section",
+      },
+      {
+        label: "OTAS repo",
+        href: "https://github.com/Anirudh-RV/otas",
+        kind: "repo",
+      },
+      {
+        label: "Biomedical RAG",
+        href: "#projects",
+        kind: "section",
+      },
+    ],
+  },
+  {
+    id: "fullstack",
+    label: "Full-stack",
+    blurb:
+      "Shipping product UIs and APIs end-to-end — PrepLoop is the clearest live example.",
+    related: [
+      {
+        label: "PrepLoop live",
+        href: "https://prep-loop-two.vercel.app",
+        kind: "live",
+      },
+      {
+        label: "PrepLoop repo",
+        href: "https://github.com/bhaveshGhanchi/PrepLoop",
+        kind: "repo",
+      },
+    ],
+  },
+  {
+    id: "ts",
+    label: "TypeScript",
+    blurb: "Typed React/Next apps and API routes I can refactor without fear.",
+    related: [
+      {
+        label: "PrepLoop",
+        href: "https://github.com/bhaveshGhanchi/PrepLoop",
+        kind: "repo",
+      },
+      { label: "Projects", href: "#projects", kind: "section" },
+    ],
+  },
+  {
+    id: "python",
+    label: "Python",
+    blurb: "Backends, NLP pipelines, and ML experiments — FastAPI and research code.",
+    related: [
+      {
+        label: "OTAS",
+        href: "https://github.com/Anirudh-RV/otas",
+        kind: "repo",
+      },
+      {
+        label: "Code2Text",
+        href: "https://github.com/bhaveshGhanchi/codeDocu",
+        kind: "repo",
+      },
+    ],
+  },
+  {
+    id: "java",
+    label: "Java",
+    blurb:
+      "Systems coursework and LEAP — reliable transport over UDP with congestion control.",
+    related: [
+      {
+        label: "LEAP repo",
+        href: "https://github.com/bhaveshGhanchi/leap",
+        kind: "repo",
+      },
+    ],
+  },
+  {
+    id: "systems",
+    label: "Systems",
+    blurb:
+      "Networking, latency, and reliability — making things hold up under load.",
+    related: [
+      {
+        label: "LEAP",
+        href: "https://github.com/bhaveshGhanchi/leap",
+        kind: "repo",
+      },
+      { label: "OTAS", href: "#work", kind: "section" },
+    ],
+  },
+];
+
+type Particle = { id: number; x: number; y: number; r: number };
+
+function hash01(n: number, salt: number) {
+  const x = Math.sin(n * 12.9898 + salt * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+function makeParticles(count: number): Particle[] {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: hash01(i, 1) * 100,
+    y: hash01(i, 2) * 100,
+    r: 0.35 + hash01(i, 3) * 1,
+  }));
+}
 
 export function HeroOrbit() {
-  const ref = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 50, damping: 20 });
-  const sy = useSpring(my, { stiffness: 50, damping: 20 });
-  const rotate = useTransform(sx, [-40, 40], [-4, 4]);
-  const shiftX = useTransform(sx, [-40, 40], [-10, 10]);
-  const shiftY = useTransform(sy, [-40, 40], [-8, 8]);
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState("ai");
+  const particles = useMemo(() => makeParticles(36), []);
+
+  const px = useMotionValue(50);
+  const py = useMotionValue(50);
+  const sx = useSpring(px, { stiffness: 70, damping: 20 });
+  const sy = useSpring(py, { stiffness: 70, damping: 20 });
+  const glowLeft = useMotionTemplate`${sx}%`;
+  const glowTop = useMotionTemplate`${sy}%`;
 
   useEffect(() => {
-    const el = ref.current;
+    const el = canvasRef.current;
     if (!el) return;
-    const onMove = (e: MouseEvent) => {
+    const onMove = (e: PointerEvent) => {
       const rect = el.getBoundingClientRect();
-      mx.set(((e.clientX - rect.left) / rect.width - 0.5) * 80);
-      my.set(((e.clientY - rect.top) / rect.height - 0.5) * 80);
+      px.set(((e.clientX - rect.left) / rect.width) * 100);
+      py.set(((e.clientY - rect.top) / rect.height) * 100);
     };
-    el.addEventListener("mousemove", onMove);
-    return () => el.removeEventListener("mousemove", onMove);
-  }, [mx, my]);
+    const onLeave = () => {
+      px.set(50);
+      py.set(50);
+    };
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("pointerleave", onLeave);
+    return () => {
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerleave", onLeave);
+    };
+  }, [px, py]);
+
+  const selected = INTERESTS.find((i) => i.id === active) ?? INTERESTS[0];
 
   return (
-    <div
-      ref={ref}
-      className="relative h-full min-h-[260px] w-full max-w-full overflow-hidden bg-panel sm:min-h-[300px] lg:min-h-[340px]"
-    >
-      <div className="crosshatch absolute inset-0" />
-
-      <motion.div
-        style={{ x: shiftX, y: shiftY, rotate }}
-        className="absolute inset-0 flex items-center justify-center"
+    <div className="flex h-full min-h-[340px] w-full max-w-full flex-col overflow-hidden bg-panel text-white sm:min-h-[380px] lg:min-h-[420px]">
+      {/* Visual field — no overlapping UI */}
+      <div
+        ref={canvasRef}
+        className="relative min-h-[140px] flex-1 overflow-hidden"
+        aria-hidden
       >
-        <svg viewBox="0 0 360 360" className="h-[88%] w-[88%]">
+        <div className="crosshatch absolute inset-0" />
+        <motion.div
+          className="pointer-events-none absolute h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,75,31,0.2),transparent_65%)]"
+          style={{ left: glowLeft, top: glowTop }}
+        />
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
+          {particles.map((p) => (
+            <ParticleDot key={p.id} particle={p} sx={sx} sy={sy} />
+          ))}
           <motion.circle
-            cx="180"
-            cy="180"
-            r="118"
+            cx={50}
+            cy={50}
+            r={10}
             fill="none"
-            stroke="rgba(255,255,255,0.14)"
-            strokeWidth="1"
-            strokeDasharray="3 9"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "180px 180px" }}
+            stroke="rgba(255,255,255,0.16)"
+            strokeWidth={0.3}
+            animate={{ r: [10, 15, 10], opacity: [0.45, 0.12, 0.45] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
           />
-          <motion.circle
-            cx="180"
-            cy="180"
-            r="76"
-            fill="none"
-            stroke="#2f6bff"
-            strokeWidth="1"
-            strokeDasharray="2 12"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "180px 180px" }}
-          />
-          <motion.circle
-            cx="180"
-            cy="62"
-            r="6"
-            fill="#ff4b1f"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "180px 180px" }}
+          <circle
+            cx={50}
+            cy={50}
+            r={8}
+            fill="#161616"
+            stroke="#ff4b1f"
+            strokeWidth={0.45}
           />
           <text
-            x="180"
-            y="186"
+            x={50}
+            y={52}
             textAnchor="middle"
-            fill="white"
+            fill="#fff"
             style={{
-              fontSize: 15,
+              fontSize: 4,
               fontFamily: "Syne, sans-serif",
               fontWeight: 700,
             }}
@@ -84,7 +222,110 @@ export function HeroOrbit() {
             BG
           </text>
         </svg>
-      </motion.div>
+      </div>
+
+      {/* Real clickable interest chips */}
+      <div className="border-t border-white/10 px-3 pt-3 pb-2">
+        <p className="mb-2 font-mono text-[10px] tracking-wide text-white/40">
+          Interests — pick one
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {INTERESTS.map((interest) => {
+            const on = interest.id === active;
+            return (
+              <motion.button
+                key={interest.id}
+                type="button"
+                onClick={() => setActive(interest.id)}
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                className={`border px-2.5 py-1.5 font-mono text-[11px] transition ${
+                  on
+                    ? "border-accent bg-accent text-white"
+                    : "border-white/20 bg-white/5 text-white/75 hover:border-white/45 hover:text-white"
+                }`}
+              >
+                {interest.label}
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Useful detail + links */}
+      <div className="border-t border-white/10 px-3 py-3">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selected.id}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.2 }}
+          >
+            <p className="font-display text-base font-semibold">{selected.label}</p>
+            <p className="mt-1 text-sm leading-snug text-white/70">
+              {selected.blurb}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {selected.related.map((link) => (
+                <a
+                  key={`${selected.id}-${link.label}`}
+                  href={link.href}
+                  {...(link.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="inline-flex items-center gap-1 border border-white/15 bg-white/5 px-2.5 py-1 font-mono text-[10px] text-white/85 transition hover:border-accent hover:text-accent"
+                >
+                  <span className="text-accent">
+                    {link.kind === "live"
+                      ? "●"
+                      : link.kind === "repo"
+                        ? "↗"
+                        : "→"}
+                  </span>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
+  );
+}
+
+function ParticleDot({
+  particle,
+  sx,
+  sy,
+}: {
+  particle: Particle;
+  sx: ReturnType<typeof useSpring>;
+  sy: ReturnType<typeof useSpring>;
+}) {
+  const x = useSpring(particle.x, { stiffness: 55, damping: 18 });
+  const y = useSpring(particle.y, { stiffness: 55, damping: 18 });
+
+  useEffect(() => {
+    const push = () => {
+      const mx = sx.get();
+      const my = sy.get();
+      const dx = particle.x - mx;
+      const dy = particle.y - my;
+      const dist = Math.max(6, Math.hypot(dx, dy));
+      const force = Math.min(10, 140 / (dist * dist));
+      x.set(particle.x + (dx / dist) * force * 5);
+      y.set(particle.y + (dy / dist) * force * 5);
+    };
+    const unsubX = sx.on("change", push);
+    const unsubY = sy.on("change", push);
+    return () => {
+      unsubX();
+      unsubY();
+    };
+  }, [particle.x, particle.y, sx, sy, x, y]);
+
+  return (
+    <motion.circle cx={x} cy={y} r={particle.r} fill="rgba(255,255,255,0.28)" />
   );
 }
