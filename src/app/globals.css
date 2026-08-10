@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f3f1ec;
+  --ink: #141414;
+  --muted: #5f5a52;
+  --line: #cfc8bc;
+  --surface: #fffdf8;
+  --panel: #1a1a1a;
+  --accent: #ff4b1f;
+  --accent-2: #2f6bff;
+  --mono: var(--font-mono);
+  --display: var(--font-display);
+  --body: var(--font-body);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --font-sans: var(--body);
+  --font-display: var(--display);
+  --font-mono: var(--mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--display), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--mono), ui-monospace, monospace;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.diag-lines {
+  background-image: repeating-linear-gradient(
+    -28deg,
+    transparent,
+    transparent 10px,
+    rgba(20, 20, 20, 0.04) 10px,
+    rgba(20, 20, 20, 0.04) 11px
+  );
+}
+
+.crosshatch {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

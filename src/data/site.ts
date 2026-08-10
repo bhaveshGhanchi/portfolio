@@ -1,0 +1,98 @@
+export const site = {
+  name: "Bhavesh Ghanchi",
+  shortName: "BG",
+  title: "Software engineer",
+  location: "Los Angeles, CA",
+  tagline:
+    "MS CS at USC. Full-stack products, AI observability, and systems that stay up under load.",
+  email: "bhaveshghanchi27@gmail.com",
+  phone: "(323) 815-2582",
+  github: "https://github.com/bhaveshGhanchi",
+  linkedin: "https://www.linkedin.com/in/bhaveshghanchi",
+  resumeUrl: "/BhaveshGhanchi_Resume.pdf",
+  education: [
+    {
+      school: "University of Southern California (USC)",
+      degree: "M.S. Computer Science",
+      detail: "GPA 3.83/4 · Aug 2024 – May 2026",
+      location: "Los Angeles, CA",
+      coursework:
+        "Analysis of Algorithms, Database Systems, Applied NLP, Deep Learning",
+    },
+    {
+      school: "KJ Somaiya College of Engineering",
+      degree: "B.Tech Computer Engineering",
+      detail: "CGPA 9.64/10 · Aug 2020 – June 2024",
+      location: "Mumbai, India",
+      coursework: "",
+    },
+  ],
+  experience: [
+    {
+      role: "Full-Stack Intern",
+      org: "Colgate-Palmolive",
+      period: "Jan 2024 – Jun 2024",
+      location: "Mumbai, India",
+      stack: "React, TypeScript, Jest, Node.js, PostgreSQL, Express",
+      points: [
+        "Built scalable frontend and backend features supporting 10,000+ users in week one across 5 regions.",
+        "Optimized REST APIs and PostgreSQL queries, cutting API latency 25% under peak traffic.",
+        "Architected CDN multi-region delivery and 4-language localization, lifting engagement 35%.",
+        "Expanded Jest coverage 50%, eliminating recurring production regressions.",
+      ],
+    },
+    {
+      role: "Research Intern",
+      org: "K J Somaiya College of Engineering",
+      period: "Mar 2023 – May 2023",
+      location: "Mumbai, India",
+      stack: "Python, BeautifulSoup, PyPDF2, NLTK, NER, Pandas",
+      points: [
+        "Built a multi-agent NLP pipeline for clinical PDF ingestion, cutting manual preprocessing 60%.",
+        "Parallel NER at 90%+ entity extraction accuracy on biomedical corpora.",
+        "TF-IDF medical summarization improved summary precision 25%.",
+      ],
+    },
+    {
+      role: "Backend Developer Intern",
+      org: "SayHey",
+      period: "Jun 2022 – Aug 2022",
+      location: "Mumbai, India",
+      stack: "JavaScript, Node.js, MongoDB, Express, Firebase",
+      points: [
+        "Owned backend services for 5,000+ users at 99%+ uptime.",
+        "REST APIs for 500+ concurrent sessions; booking latency down 30%.",
+        "Root-cause work cut incident rate 40% and hotfix turnaround 35%.",
+      ],
+    },
+  ],
+  skills: {
+    Languages: ["Python", "Java", "JavaScript", "TypeScript", "SQL"],
+    "AI / ML": [
+      "PyTorch",
+      "TensorFlow",
+      "NLP",
+      "Transformers",
+      "LLMs",
+      "RAG",
+      "QLoRA",
+      "FAISS",
+    ],
+    Backend: [
+      "Node.js",
+      "Express",
+      "FastAPI",
+      "REST",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+    ],
+    Infra: ["Docker", "Git", "Linux", "Jenkins", "AWS", "GCP"],
+  },
+  nav: [
+    { label: "OTAS", href: "#work" },
+    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Contact", href: "#contact" },
+  ],
+} as const;
