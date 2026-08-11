@@ -45,7 +45,7 @@ export const projects: Project[] = [
     slug: "leap",
     name: "LEAP",
     summary:
-      "TCP-like reliable transport over UDP in Java — sliding window, fast retransmit, adaptive RTO, AIMD, and end-to-end SHA-256 integrity.",
+      "TCP-like reliable transport over UDP — sliding window, fast retransmit, adaptive RTO, AIMD. 46 MB/s at 0% loss; 88.8% efficiency at 10% loss with SHA-256 integrity.",
     stack: ["Java", "Maven", "UDP"],
     repoUrl: "https://github.com/bhaveshGhanchi/leap",
     metric: { label: "throughput", value: "46 MB/s" },

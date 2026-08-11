@@ -32,11 +32,11 @@ export const site = {
       org: "Easley-Dunn Productions",
       period: "Jul 2026 – Present",
       location: "Torrance, CA (Remote)",
-      stack: "C#, Unity, Firebase, UGS, Mirror, EOS",
+      stack: "C#, Unity, Firebase, Unity Gaming Services, Mirror, EOS",
       points: [
-        "Building backend integrations and data persistence for Robot Race (Unity mobile game) across Firebase, UGS, Mirror, and EOS.",
-        "Developing and integrating core gameplay systems in C# on a state-machine-based architecture.",
-        "Diagnosing player movement and collision defects via code analysis, runtime logging, and map-specific testing.",
+        "Building backend integrations and persistence for Robot Race across Firebase, Unity Gaming Services, Mirror, and EOS.",
+        "Developing core gameplay systems in C# on a state-machine architecture, smoothing level transitions and control response.",
+        "Diagnosing player movement and collision defects via code analysis, runtime logging, and map-specific testing to improve stability.",
       ],
     },
     {
@@ -72,7 +72,7 @@ export const site = {
       location: "Mumbai, India",
       stack: "Python, NLP, NER",
       points: [
-        "Built a multi-agent NLP pipeline automating text extraction and preprocessing across 50+ clinical PDFs.",
+        "Built a multi-agent NLP pipeline in Python automating text extraction and preprocessing across 50+ clinical PDFs.",
         "Developed a parallel-processing named-entity recognition system achieving 90%+ entity extraction accuracy on biomedical corpora.",
       ],
     },
