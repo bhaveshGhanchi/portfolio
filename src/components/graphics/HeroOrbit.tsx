@@ -27,30 +27,22 @@ const INTERESTS: Interest[] = [
     id: "ai",
     label: "AI / LLMs",
     blurb:
-      "Agent observability, RAG, and fine-tuning — how models behave in real systems.",
+      "Agent observability, RAG, and fine-tuning — OTAS and biomedical retrieval work.",
     related: [
-      {
-        label: "OTAS",
-        href: "#work",
-        kind: "section",
-      },
+      { label: "OTAS", href: "#work", kind: "section" },
       {
         label: "OTAS repo",
         href: "https://github.com/Anirudh-RV/otas",
         kind: "repo",
       },
-      {
-        label: "Biomedical RAG",
-        href: "#projects",
-        kind: "section",
-      },
+      { label: "Biomedical RAG", href: "#projects", kind: "section" },
     ],
   },
   {
     id: "fullstack",
     label: "Full-stack",
     blurb:
-      "Shipping product UIs and APIs end-to-end — PrepLoop is the clearest live example.",
+      "Product UIs and APIs end-to-end — PrepLoop is live if you want to click around.",
     related: [
       {
         label: "PrepLoop live",
@@ -65,60 +57,49 @@ const INTERESTS: Interest[] = [
     ],
   },
   {
-    id: "ts",
-    label: "TypeScript",
-    blurb: "Typed React/Next apps and API routes I can refactor without fear.",
+    id: "games",
+    label: "Unity / C#",
+    blurb:
+      "Current internship — Robot Race backend integrations and gameplay systems.",
     related: [
-      {
-        label: "PrepLoop",
-        href: "https://github.com/bhaveshGhanchi/PrepLoop",
-        kind: "repo",
-      },
-      { label: "Projects", href: "#projects", kind: "section" },
+      { label: "Experience", href: "#about", kind: "section" },
+      { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },
+    ],
+  },
+  {
+    id: "gis",
+    label: "GIS / Maps",
+    blurb:
+      "SAFE internship — ArcGIS bike-route classification and a safer-path chatbot.",
+    related: [
+      { label: "Experience", href: "#about", kind: "section" },
+      { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },
     ],
   },
   {
     id: "python",
     label: "Python",
-    blurb: "Backends, NLP pipelines, and ML experiments — FastAPI and research code.",
+    blurb: "Backends, NLP pipelines, and ML systems — FastAPI and research code.",
     related: [
       {
         label: "OTAS",
         href: "https://github.com/Anirudh-RV/otas",
         kind: "repo",
       },
-      {
-        label: "Code2Text",
-        href: "https://github.com/bhaveshGhanchi/codeDocu",
-        kind: "repo",
-      },
+      { label: "Projects", href: "#projects", kind: "section" },
     ],
   },
   {
     id: "java",
     label: "Java",
     blurb:
-      "Systems coursework and LEAP — reliable transport over UDP with congestion control.",
+      "LEAP — reliable transport over UDP with congestion control and integrity checks.",
     related: [
       {
         label: "LEAP repo",
         href: "https://github.com/bhaveshGhanchi/leap",
         kind: "repo",
       },
-    ],
-  },
-  {
-    id: "systems",
-    label: "Systems",
-    blurb:
-      "Networking, latency, and reliability — making things hold up under load.",
-    related: [
-      {
-        label: "LEAP",
-        href: "https://github.com/bhaveshGhanchi/leap",
-        kind: "repo",
-      },
-      { label: "OTAS", href: "#work", kind: "section" },
     ],
   },
 ];
