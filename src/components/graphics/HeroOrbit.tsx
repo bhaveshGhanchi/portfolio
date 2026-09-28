@@ -32,7 +32,7 @@ const INTERESTS: Interest[] = [
       { label: "OTAS", href: "#work", kind: "section" },
       {
         label: "OTAS repo",
-        href: "https://github.com/Anirudh-RV/otas",
+        href: "https://github.com/bhaveshGhanchi/otas",
         kind: "repo",
       },
       { label: "Biomedical RAG", href: "#projects", kind: "section" },
@@ -70,7 +70,7 @@ const INTERESTS: Interest[] = [
     id: "gis",
     label: "GIS / Maps",
     blurb:
-      "SAFE internship — ArcGIS bike-route classification and a safer-path chatbot.",
+      "SAFE internship — geospatial ETL (497→1,248 segments) and an LLM route recommender.",
     related: [
       { label: "Experience", href: "#about", kind: "section" },
       { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },
@@ -83,7 +83,7 @@ const INTERESTS: Interest[] = [
     related: [
       {
         label: "OTAS",
-        href: "https://github.com/Anirudh-RV/otas",
+        href: "https://github.com/bhaveshGhanchi/otas",
         kind: "repo",
       },
       { label: "Projects", href: "#projects", kind: "section" },

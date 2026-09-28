@@ -57,7 +57,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           rel="noopener noreferrer"
           className="font-mono text-xs text-accent transition hover:underline"
         >
-          {project.liveUrl ? "Open live →" : "Source →"}
+          {project.liveUrl
+            ? "Open live →"
+            : project.externalUrl
+              ? "Paper →"
+              : "Source →"}
         </a>
         {secondary ? (
           <a

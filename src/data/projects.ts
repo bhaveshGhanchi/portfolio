@@ -17,20 +17,47 @@ export const featuredProject: Project = {
   slug: "otas",
   name: "OTAS",
   summary:
-    "Observability Tool for Agentic AI Systems — capture agent decisions, prompts, tool calls, and latency across multi-agent workflows.",
-  stack: ["Python", "FastAPI", "LLM APIs", "PostgreSQL", "Docker"],
-  repoUrl: "https://github.com/Anirudh-RV/otas",
-  docsUrl: "https://mintlify.wiki/Vedant-Jayesh-Oza/otas",
-  featured: true,
-  role: "Team project — observability layer, agent telemetry, and real-time dashboard",
-  highlights: [
-    "Built an observability layer capturing agent decisions, prompts, tool calls, and latency across 10+ agents.",
-    "Developed a real-time dashboard tracking 800+ agent tasks per day with anomaly detection on execution traces.",
+    "Observability platform for AI agents — capture prompts, tool calls, latency, and outcomes linked into execution lineage across runs, handoffs, and retries.",
+  stack: [
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "Redis",
+    "Celery",
+    "OpenTelemetry",
+    "MCP",
+    "Docker",
   ],
-  metric: { label: "tasks / day", value: "800+" },
+  repoUrl: "https://github.com/bhaveshGhanchi/otas",
+  featured: true,
+  role: "Team project + personal fork — tracing, MCP server, and CLI hooks",
+  highlights: [
+    "Co-built an observability platform for AI agents capturing prompts, tool calls, latency, and outcomes across runs, handoffs, and retries.",
+    "Added OpenTelemetry tracing, a Pydantic-validated MCP server, and CLI hooks for Claude Code, Cursor, and Codex.",
+    "Load-tested at 10 agents and 800 sessions, persisting 1,620 events at 149 ms p95.",
+  ],
+  metric: { label: "p95 latency", value: "149 ms" },
 };
 
 export const projects: Project[] = [
+  {
+    slug: "leap",
+    name: "LEAP",
+    summary:
+      "TCP-style reliable transport over UDP from scratch — sliding window, fast retransmit, adaptive RTO, Tahoe congestion control, CRC32 + SHA-256 integrity. 46.2 MB/s at 0% loss; 88.8% efficiency at 10% loss. Documented in a 6-part blog series.",
+    stack: ["Java", "UDP", "Maven"],
+    repoUrl: "https://github.com/bhaveshGhanchi/leap",
+    metric: { label: "throughput", value: "46.2 MB/s" },
+  },
+  {
+    slug: "biomedical-rag",
+    name: "Biomedical RAG",
+    summary:
+      "Published RAG medical Q&A system — MiniLM embeddings, FAISS retrieval, Mistral-7B fine-tuned with QLoRA; BERTScore-F1 0.88–0.90.",
+    stack: ["PyTorch", "FAISS", "QLoRA", "Mistral-7B"],
+    externalUrl: "https://arxiv.org/abs/2509.05505",
+    metric: { label: "BERTScore-F1", value: "0.88–0.90" },
+  },
   {
     slug: "preploop",
     name: "PrepLoop",
@@ -40,23 +67,5 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/bhaveshGhanchi/PrepLoop",
     liveUrl: "https://prep-loop-two.vercel.app",
     metric: { label: "status", value: "LIVE" },
-  },
-  {
-    slug: "leap",
-    name: "LEAP",
-    summary:
-      "TCP-like reliable transport over UDP — sliding window, fast retransmit, adaptive RTO, AIMD. 46 MB/s at 0% loss; 88.8% efficiency at 10% loss with SHA-256 integrity.",
-    stack: ["Java", "Maven", "UDP"],
-    repoUrl: "https://github.com/bhaveshGhanchi/leap",
-    metric: { label: "throughput", value: "46 MB/s" },
-  },
-  {
-    slug: "biomedical-rag",
-    name: "Biomedical RAG",
-    summary:
-      "FAISS retrieval over biomedical embeddings with a QLoRA-tuned LLM — +5.6% BERTScore F1 over the base model.",
-    stack: ["PyTorch", "FAISS", "QLoRA", "Transformers"],
-    externalUrl: "https://huggingface.co",
-    metric: { label: "BERTScore Δ", value: "+5.6%" },
   },
 ];

@@ -86,6 +86,33 @@ export function About() {
             </div>
 
             <div>
+              <p className="font-mono text-[11px] text-white/45">
+                Publications
+              </p>
+              <ul className="mt-4 space-y-5">
+                {site.publications.map((pub) => (
+                  <li key={pub.url}>
+                    <a
+                      href={pub.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-display text-base font-bold text-white transition hover:text-accent"
+                    >
+                      {pub.title}
+                    </a>
+                    <p className="mt-1 text-sm text-white/65">{pub.authors}</p>
+                    <p className="mt-1 font-mono text-[11px] text-white/40">
+                      {pub.venue}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      {pub.summary}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
               <p className="font-mono text-[11px] text-white/45">Skills</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {Object.values(site.skills)
