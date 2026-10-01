@@ -60,7 +60,7 @@ const INTERESTS: Interest[] = [
     id: "games",
     label: "Unity / C#",
     blurb:
-      "Current internship — Robot Race backends (Firebase, UGS, Mirror, EOS) and C# gameplay systems.",
+      "Current internship — Robot Race vehicle simulation and 6-player multiplayer sync in C#.",
     related: [
       { label: "Experience", href: "#about", kind: "section" },
       { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },
