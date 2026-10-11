@@ -62,7 +62,7 @@ export const projects: Project[] = [
     slug: "biomedical-rag",
     name: "Biomedical RAG",
     summary:
-      "Published biomedical RAG pipeline — MiniLM embeddings, FAISS retrieval, and QLoRA-tuned Mistral-7B at 0.88–0.90 BERTScore F1.",
+      "Published biomedical RAG Q&A system — MiniLM embeddings, top-5 FAISS retrieval, and QLoRA-tuned Mistral-7B on MedQuAD; 0.88–0.90 BERTScore F1.",
     stack: ["PyTorch", "FAISS", "QLoRA", "Mistral-7B"],
     externalUrl: "https://arxiv.org/abs/2509.05505",
     metric: { label: "BERTScore-F1", value: "0.88–0.90" },

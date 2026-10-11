@@ -66,7 +66,7 @@ const INTERESTS: Interest[] = [
     id: "gis",
     label: "GIS / Maps",
     blurb:
-      "SAFE internship — geospatial ETL converting 497 GIS features into 1,248 routable segments.",
+      "SAFE internship — geospatial ETL (497→1,248 segments) and an LLM-assisted route planner.",
     related: [
       { label: "Experience", href: "#about", kind: "section" },
       { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },

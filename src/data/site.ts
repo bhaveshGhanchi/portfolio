@@ -34,7 +34,7 @@ export const site = {
       location: "San Francisco, CA",
       stack: "C#, vehicle simulation, multiplayer sync",
       points: [
-        "Architected a C# vehicle-simulation and state-machine framework unifying Robot, Car, and Plane handling across 6 tracks.",
+        "Architected a reusable C# vehicle-simulation and state-machine framework that unified Robot, Car, and Plane handling while centralizing physics tuning, transformations, drifting, combat, and recovery across 6 tracks.",
         "Profiled the multiplayer networking layer to root-cause a client-server tick mismatch, then rebuilt fault-tolerant state sync for 6-player races, delivering 67% fewer transform updates at 10 Hz against a 30 Hz tick with connectivity recovery.",
       ],
     },
@@ -43,9 +43,10 @@ export const site = {
       org: "Streets Are For Everyone (SAFE)",
       period: "Jun 2025 – Aug 2025",
       location: "Los Angeles, CA",
-      stack: "React, Node.js, Python, GIS",
+      stack: "React, Node.js, Python, GIS, LLM",
       points: [
         "Architected a geospatial intelligence platform using React, Node.js, and Python, designing an ETL and graph-construction pipeline that converted 497 GIS features into 1,248 routable segments, increasing routing granularity by 151% with 100% coverage.",
+        "Launched an LLM-assisted route planner for a 60-cyclist beta, extracting safety preferences from natural-language requests, grounding recommendations in GIS data, and iterating on rider feedback before wider rollout.",
       ],
     },
     {
@@ -69,16 +70,6 @@ export const site = {
         "Built a Python clinical NLP pipeline processing 5,000+ healthcare documents, fine-tuning BERT with SciSpacy to extract medical entities and classify content across 12 categories, achieving an 89% F1 score.",
       ],
     },
-    {
-      role: "Backend Developer Intern",
-      org: "SayHey",
-      period: "Jun 2022 – Aug 2022",
-      location: "Mumbai, India",
-      stack: "Node.js, REST APIs, concurrency",
-      points: [
-        "Owned the backend for a mental-health platform, building REST APIs and concurrency controls that cut latency 30% and operating costs ~15%.",
-      ],
-    },
   ],
   publications: [
     {
@@ -87,7 +78,7 @@ export const site = {
       venue: "arXiv:2509.05505, Sep 2025",
       url: "https://arxiv.org/abs/2509.05505",
       summary:
-        "Built a biomedical RAG pipeline with MiniLM embeddings, FAISS retrieval, and QLoRA-tuned Mistral-7B at 0.88–0.90 BERTScore F1.",
+        "Co-developed a biomedical RAG question-answering system using MiniLM embeddings, top-5 FAISS retrieval, and QLoRA-tuned Mistral-7B on MedQuAD, achieving 0.88–0.90 BERTScore F1.",
     },
   ],
   skills: {
@@ -106,28 +97,33 @@ export const site = {
       "Agentic Workflows",
       "MCP",
     ],
-    "Backend & Infrastructure": [
+    Frameworks: [
+      "React",
       "Django",
       "FastAPI",
       "Node.js",
       "Express",
+      "Celery",
       "REST APIs",
       "Microservices",
+    ],
+    "Data & Infrastructure": [
       "PostgreSQL",
       "Redis",
-      "Celery",
+      "Firebase",
       "Docker",
       "CI/CD",
       "Git",
       "Linux",
+      "OpenTelemetry",
     ],
     Systems: [
       "Distributed Systems",
       "Concurrency",
-      "Replication",
-      "Consensus & Consistency",
+      "Replication & Consensus",
       "Performance Optimization",
       "Networking (TCP/UDP/HTTP)",
+      "BGP",
     ],
   },
   nav: [
