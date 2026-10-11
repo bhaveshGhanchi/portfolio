@@ -23,7 +23,7 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Bhavesh Ghanchi",
   description:
-    "Software engineer — full-stack, AI systems, and observability. OTAS, PrepLoop, LEAP, and more.",
+    "Software engineer — distributed systems and backend. NimbusKV, OTAS, LEAP, and more.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

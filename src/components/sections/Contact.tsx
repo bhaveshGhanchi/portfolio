@@ -17,7 +17,7 @@ export function Contact() {
           Let&apos;s talk.
         </motion.h2>
         <p className="mt-4 max-w-md text-muted">
-          Open to roles and collaborations in full-stack and AI systems.
+          Open to roles in distributed systems, backend, and AI infrastructure.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">

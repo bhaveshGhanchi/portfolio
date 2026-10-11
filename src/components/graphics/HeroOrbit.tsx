@@ -39,21 +39,17 @@ const INTERESTS: Interest[] = [
     ],
   },
   {
-    id: "fullstack",
-    label: "Full-stack",
+    id: "distributed",
+    label: "Distributed",
     blurb:
-      "Product UIs and APIs end-to-end — PrepLoop is live if you want to click around.",
+      "NimbusKV — a 3-node Go key-value store with Raft-style election and quorum writes.",
     related: [
       {
-        label: "PrepLoop live",
-        href: "https://prep-loop-two.vercel.app",
-        kind: "live",
-      },
-      {
-        label: "PrepLoop repo",
-        href: "https://github.com/bhaveshGhanchi/PrepLoop",
+        label: "NimbusKV repo",
+        href: "https://github.com/bhaveshGhanchi/NimbusKV",
         kind: "repo",
       },
+      { label: "Projects", href: "#projects", kind: "section" },
     ],
   },
   {
@@ -70,7 +66,7 @@ const INTERESTS: Interest[] = [
     id: "gis",
     label: "GIS / Maps",
     blurb:
-      "SAFE internship — geospatial ETL (497→1,248 segments) and an LLM route recommender.",
+      "SAFE internship — geospatial ETL converting 497 GIS features into 1,248 routable segments.",
     related: [
       { label: "Experience", href: "#about", kind: "section" },
       { label: "Resume", href: "/BhaveshGhanchi_Resume.pdf", kind: "docs" },
