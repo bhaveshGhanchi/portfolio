@@ -53,6 +53,24 @@ const INTERESTS: Interest[] = [
     ],
   },
   {
+    id: "fullstack",
+    label: "Full-stack",
+    blurb:
+      "Product UIs and APIs end-to-end — PrepLoop is live if you want to click around.",
+    related: [
+      {
+        label: "PrepLoop live",
+        href: "https://prep-loop-two.vercel.app",
+        kind: "live",
+      },
+      {
+        label: "PrepLoop repo",
+        href: "https://github.com/bhaveshGhanchi/PrepLoop",
+        kind: "repo",
+      },
+    ],
+  },
+  {
     id: "games",
     label: "Unity / C#",
     blurb:

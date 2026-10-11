@@ -17,7 +17,7 @@ export function Projects() {
           Projects
         </motion.h2>
         <p className="mt-3 max-w-lg text-muted">
-          Source on GitHub — NimbusKV, LEAP, and the RAG paper.
+          Source on GitHub — PrepLoop is live.
         </p>
 
         <div className="mt-12 grid gap-3 md:grid-cols-2">

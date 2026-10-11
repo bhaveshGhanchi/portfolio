@@ -67,4 +67,14 @@ export const projects: Project[] = [
     externalUrl: "https://arxiv.org/abs/2509.05505",
     metric: { label: "BERTScore-F1", value: "0.88–0.90" },
   },
+  {
+    slug: "preploop",
+    name: "PrepLoop",
+    summary:
+      "Interview prep platform with approach-first coding, system design, and behavioral workflows — plus cross-device sync and offline caching.",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
+    repoUrl: "https://github.com/bhaveshGhanchi/PrepLoop",
+    liveUrl: "https://prep-loop-two.vercel.app",
+    metric: { label: "status", value: "LIVE" },
+  },
 ];
